@@ -6,7 +6,7 @@ class Team(models.Model):
 	name = models.CharField(max_length=100)
 	#TODO: add fields like points, money, etc...
 	def __unicode__(self):
-        return self.name
+		return self.name
 
 
 
@@ -17,7 +17,7 @@ class User(models.Model):
 	#TODO: add fields like points, money, etc...
 	team = models.ForeignKey(Team)
 	def __unicode__(self):
-        return self.nickname
+		return self.nickname
 
 	def set_password(self, raw_password):
 		algo = 'sha1'
@@ -32,4 +32,4 @@ class Venue(models.Model):
 	objects = models.GeoManager()
 	#TODO:  manage category and owning team
 	def __unicode__(self):
-        return self.name
+		return self.name
