@@ -12,10 +12,10 @@ class TeamSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('nickname')
+        fields = ('id','nickname')
 
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Venue
-        fields = ('name')
+        fields = ('id','name')
 
