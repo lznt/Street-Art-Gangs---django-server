@@ -59,8 +59,8 @@ WSGI_APPLICATION = 'streetArtGangs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'graffiti', 
+        'ENGINE': 'django.contrib.gis.db.backends.mysql',
+        'NAME': 'graffiti',
         'USER': 'gangAdmin',
         'PASSWORD': 'streetArtGangs',
         'HOST': '127.0.0.1',
