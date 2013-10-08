@@ -3,13 +3,13 @@ import random
 
 
 class Team(models.Model):
-	name = models.CharField(max_lenght=100)
+	name = models.CharField(max_length=100)
 	#TODO: add fields like points, money, etc...
 
 
 
 class User(models.Model):
-	nickname = models.CharField(max_lenght=100)
+	nickname = models.CharField(max_length=100)
 	password = models.CharField(_('password'), max_length=128)
 	#TODO: add fields like points, money, etc...
 	team = models.ForeignKey(Team)
