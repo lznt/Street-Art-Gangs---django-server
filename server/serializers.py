@@ -6,7 +6,7 @@ from server.models import User, Team, Venue
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('name')
+        fields = ('id', 'name')
 
 
 class UserSerializer(serializers.ModelSerializer):

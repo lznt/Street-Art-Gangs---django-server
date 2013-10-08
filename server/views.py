@@ -12,7 +12,7 @@ class TeamList(APIView):
     """
     def get(self, request, format=None):
         teams = Team.objects.all()
-        serializer = TeamSerializer(teams, many=True)
+        serializer = TeamSerializer(teams, many =True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
