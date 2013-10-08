@@ -3,15 +3,19 @@ from rest_framework import serializers
 from server.models import User, Team, Venue
 
 
-
-class TeamSerializer(serializers.Serializer):
-
-    pk = serializers.Field()
-    name = serializers.CharField(max_length=100)
-
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = ('name')
 
 
-class UserSerializer(serializers.Serializer):
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('nickname')
 
-    pk = serializers.Field()
-    nickname = serializers.CharField(max_length=100)
+class VenueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Venue
+        fields = ('name')
+
