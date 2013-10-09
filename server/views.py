@@ -1,6 +1,6 @@
-from django.contrib.auth.models import Group, User
 from server.serializers import GangSerializer, GangsterSerializer
 from rest_framework import generics
+from server.models import Venue, Gang, Gangster
 
 
 class GangsterList(generics.ListCreateAPIView):
