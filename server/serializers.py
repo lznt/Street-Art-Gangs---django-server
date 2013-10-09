@@ -10,7 +10,7 @@ class GangSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gang
         fields = ('group', 'gangsters')
-        depth = 1
+        depth = 2
 
 
 class GangsterSerializer(serializers.ModelSerializer):
@@ -18,7 +18,7 @@ class GangsterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gangster
         fields = ('user','gang')
-        depth = 1
+        depth = 2
 
 
 class VenueSerializer(serializers.ModelSerializer):
