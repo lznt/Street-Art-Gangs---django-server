@@ -5,7 +5,7 @@ from server.models import Venue, Gang, Gangster
 
 class GangSerializer(serializers.ModelSerializer):
 
-    gangs = serializers.PrimaryKeyRelatedField(many=True)
+    gangsters = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
         model = Gang
