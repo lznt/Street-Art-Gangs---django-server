@@ -25,6 +25,6 @@ class Venue(models.Model):
     name = models.CharField(max_length=100)
     geometry = models.PointField()
     objects = models.GeoManager()
-    gang = models.ForeignKey('Gang', related_name = 'gang')
+    owner = models.ForeignKey('Gang', related_name = 'owner')
     def __unicode__(self):
         return self.name
