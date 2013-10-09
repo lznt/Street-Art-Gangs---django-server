@@ -5,6 +5,8 @@ from django.contrib.auth.models import Group, User
 class Gang (models.Model):
     #TODO: add fields like points, money, etc...
     group = models.OneToOneField(Group)
+    gang = models.ForeignKey('Gang', related_name = 'gang')
+
 
 
 
@@ -22,6 +24,6 @@ class Venue(models.Model):
     name = models.CharField(max_length=100)
     geometry = models.PointField()
     objects = models.GeoManager()
-    owner = models.ForeignKey('Gang')
+    gang = models.ForeignKey('Gang', related_name = 'gang')
     def __unicode__(self):
         return self.name
