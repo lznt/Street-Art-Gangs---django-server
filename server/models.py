@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group, User
 
 class Gang (models.Model):
     #TODO: add fields like points, money, etc...
-    group = models.ForeignKey('Group', unique=True, related_name = 'group')
+    group = models.ForeignKey('Group', unique=True, related_name = 'base_group')
 
     def __unicode__(self):
         return  u"%s" % (self.group.name)
@@ -16,7 +16,7 @@ class Gang (models.Model):
 class Gangster(models.Model):
 
     #TODO: add fields like points, money, etc...
-    user = models.ForeignKey('User', unique=True, related_name = 'user')
+    user = models.ForeignKey('User', unique=True, related_name = 'base_user')
     gang = models.ForeignKey('Gang', related_name = 'gang')
 
     def __unicode__(self):

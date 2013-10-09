@@ -14,6 +14,7 @@ class GangsterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gangster
 
+
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Venue
