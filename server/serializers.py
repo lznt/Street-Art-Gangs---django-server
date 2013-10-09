@@ -1,25 +1,39 @@
 from django.forms import widgets
 from rest_framework import serializers
 from server.models import Venue, Gang, Gangster
+from django.contrib.auth.models import Group, User
+
+class GroupSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Group
+        fields = ('id', 'name')
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username')
 
 
 class GangSerializer(serializers.ModelSerializer):
 
-    name = serializers.SlugRelatedField(slug_field='name', read_only=True)
+    group = GroupSerializer()
     gangsters = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
         model = Gang
-        fields = ('name', 'gangsters')
+        fields = ('group', 'gangsters')
 
 
 class GangsterSerializer(serializers.ModelSerializer):
 
-    username = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    gang = GangSerializer()
+    user = UserSerializer()
 
     class Meta:
         model = Gangster
-        fields = ('username','gang')
+        fields = ('user','gang')
 
 
 
