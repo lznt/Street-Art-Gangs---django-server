@@ -1,5 +1,5 @@
 from django.contrib.auth.models import Group, User
-from server.serializers import TeamSerializer
+from server.serializers import GangSerializer
 from rest_framework import generics
 
 
