@@ -9,12 +9,14 @@ class GangSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Gang
+        fields = ('group.id','group.name', 'gangsters')
 
 
 class GangsterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Gangster
+        fields = ('user.id','user.username', 'gang.group.name')
 
 
 class VenueSerializer(serializers.ModelSerializer):
