@@ -1,7 +1,6 @@
 from django.forms import widgets
 from rest_framework import serializers
-from server.models import Venue, Gang
-from django.contrib.auth.models import Group, User
+from server.models import Venue, Gang, Gangster
 
 
 class GangSerializer(serializers.ModelSerializer):
