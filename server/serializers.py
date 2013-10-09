@@ -7,7 +7,6 @@ class GangSerializer(serializers.ModelSerializer):
     name = serializers.PrimaryKeyRelatedField(many=True)
     class Meta:
         model = Gang
-        fields = ('group')
 
 
 class GangsterSerializer(serializers.ModelSerializer):
