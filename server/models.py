@@ -7,7 +7,7 @@ class Gang (models.Model):
     group = models.OneToOneField(Group, primary_key=True)
 
     def __unicode__(self):
-        return  u"%s" % (group.name)
+        return  u"%s" % (self.group.name)
 
 
 
@@ -20,7 +20,7 @@ class Gangster(models.Model):
     gang = models.ForeignKey('Gang', related_name = 'gang')
 
     def __unicode__(self):
-        return  u"%s, %s" % (user.username, gang.group.name)
+        return  u"%s, %s" % (self.user.username, self.gang.group.name)
 
 
 
