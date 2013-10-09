@@ -4,20 +4,20 @@ from rest_framework import generics
 
 
 class GangsterList(generics.ListCreateAPIView):
-    queryset = Group.objects.all()
+    queryset = Gangster.objects.all()
     serializer_class = GangsterSerializer
 
 
 class GangsterDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Group.objects.all()
+    queryset = Gangster.objects.all()
     serializer_class = GangsterSerializer
 
 
 class GangList(generics.ListCreateAPIView):
-    queryset = Group.objects.all()
+    queryset = Gang.objects.all()
     serializer_class = GangSerializer
 
 
 class GangDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Group.objects.all()
+    queryset = Gang.objects.all()
     serializer_class = GangSerializer
