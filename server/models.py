@@ -6,6 +6,8 @@ class Gang (models.Model):
     #TODO: add fields like points, money, etc...
     group = models.OneToOneField(Group, primary_key=True)
 
+    def __unicode__(self):
+        return  u"%s" % (group.name)
 
 
 
@@ -16,6 +18,9 @@ class Gangster(models.Model):
     #TODO: add fields like points, money, etc...
     user = models.OneToOneField(User, primary_key=True)
     gang = models.ForeignKey('Gang', related_name = 'gang')
+
+    def __unicode__(self):
+        return  u"%s, %s" % (user.username, gang.group.name)
 
 
 
