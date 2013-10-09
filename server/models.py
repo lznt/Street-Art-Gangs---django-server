@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group, User
 
 class Gang (models.Model):
     #TODO: add fields like points, money, etc...
-    group = models.OneToOneField(Group)
+    group = models.OneToOneField(Group, primary_key=True)
 
 
 
@@ -14,7 +14,7 @@ class Gang (models.Model):
 class Gangster(models.Model):
 
     #TODO: add fields like points, money, etc...
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, primary_key=True)
     gang = models.ForeignKey('Gang', related_name = 'gang')
 
 
