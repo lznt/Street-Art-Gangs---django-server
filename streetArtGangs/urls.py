@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^gangs/$', views.GangList.as_view()),
     url(r'^gangs/(?P<pk>[0-9]+)/$', views.GangDetail.as_view()),
+    url(r'^gangsters/$', views.GangsterList.as_view()),
+    url(r'^gangsters/(?P<pk>[0-9]+)/$', views.GangsterDetail.as_view()),
 )
 
 
