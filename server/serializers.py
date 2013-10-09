@@ -14,7 +14,7 @@ class GangsterSerializer(serializers.ModelSerializer):
     gang = serializers.PrimaryKeyRelatedField()
     class Meta:
         model = User
-        fields = ('id','username')
+        fields = ('id','username', 'gang')
 
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
