@@ -7,8 +7,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^teams/$', views.TeamList.as_view()),
-    url(r'^teams/(?P<pk>[0-9]+)/$', views.TeamDetail.as_view()),
+    url(r'^gangs/$', views.GangList.as_view()),
+    url(r'^gangs/(?P<pk>[0-9]+)/$', views.GangDetail.as_view()),
 )
 
 

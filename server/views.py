@@ -1,13 +1,13 @@
-from server.models import Team
+from django.contrib.auth.models import Group, User
 from server.serializers import TeamSerializer
 from rest_framework import generics
 
 
-class TeamList(generics.ListCreateAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+class GangList(generics.ListCreateAPIView):
+    queryset = Group.objects.all()
+    serializer_class = GangSerializer
 
 
-class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+class GangDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Group.objects.all()
+    serializer_class = GangSerializer

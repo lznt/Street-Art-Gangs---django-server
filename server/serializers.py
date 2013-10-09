@@ -1,18 +1,19 @@
 from django.forms import widgets
 from rest_framework import serializers
-from server.models import User, Team, Venue
+from server.models import Venue
+from django.contrib.auth.models import Group, User
 
 
-class TeamSerializer(serializers.ModelSerializer):
+class GangSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Team
+        model = Group
         fields = ('id', 'name')
 
 
-class UserSerializer(serializers.ModelSerializer):
+class GangsterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id','nickname')
+        fields = ('id','username')
 
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
