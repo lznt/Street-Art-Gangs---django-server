@@ -5,7 +5,7 @@ from server.models import Venue, Gang, Gangster
 
 class GangSerializer(serializers.ModelSerializer):
 
-    name = serializers.SlugRelatedField(slug_field='name')
+    name = serializers.SlugRelatedField(slug_field='name', read_only=True)
     gangsters = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
@@ -15,7 +15,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 class GangsterSerializer(serializers.ModelSerializer):
 
-    username = serializers.SlugRelatedField(slug_field='username')
+    username = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Gangster
