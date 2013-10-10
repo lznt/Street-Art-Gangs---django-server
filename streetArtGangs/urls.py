@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from rest_framework.urlpatterns import format_suffix_patterns
 from server import views
-
+from django.conf.urls import include
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,5 +13,8 @@ urlpatterns = patterns('',
     url(r'^gangsters/(?P<pk>[0-9]+)/$', views.GangsterDetail.as_view()),
 )
 
-
 urlpatterns = format_suffix_patterns(urlpatterns)
+urlpatterns += patterns('',
+    url(r'^api-auth/', include('rest_framework.urls',
+        namespace='rest_framework')),
+)
