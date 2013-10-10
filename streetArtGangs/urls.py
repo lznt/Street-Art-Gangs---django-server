@@ -1,20 +1,45 @@
 from django.conf.urls import patterns, include, url
-from rest_framework.urlpatterns import format_suffix_patterns
-from server import views
-from django.conf.urls import include
 from django.contrib import admin
+from server.views import GangsterViewSet, GangViewSet
+from rest_framework import renderers
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from rest_framework.urlpatterns import format_suffix_patterns
+
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^gangs/$', views.GangList.as_view()),
-    url(r'^gangs/(?P<pk>[0-9]+)/$', views.GangDetail.as_view()),
-    url(r'^gangsters/$', views.GangsterList.as_view()),
-    url(r'^gangsters/(?P<pk>[0-9]+)/$', views.GangsterDetail.as_view()),
-)
 
-urlpatterns = format_suffix_patterns(urlpatterns)
-urlpatterns += patterns('',
-    url(r'^api-auth/', include('rest_framework.urls',
-        namespace='rest_framework')),
-)
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('gangster-list', request=request, format=format),
+        'snippets': reverse('gang-list', request=request, format=format)
+    })
+
+
+gang_list = GangViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+gang_detail = GangViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+gangster_list = GangsterViewSet.as_view({
+    'get': 'list'
+})
+gangster_detail = GangsterViewSet.as_view({
+    'get': 'retrieve'
+})
+
+urlpatterns = format_suffix_patterns(patterns('server.views',
+    url(r'^$', 'api_root'),
+    url(r'^gangs/$', gang_list, name='gang-list'),
+    url(r'^gangs/(?P<pk>[0-9]+)/$', gang_detail, name='gang-detail'),
+    url(r'^gangster/$', gangster_list, name='gangster-list'),
+    url(r'^gangster/(?P<pk>[0-9]+)/$', gangster_detail, name='gangster-detail')
+))
