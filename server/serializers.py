@@ -5,16 +5,6 @@ from django.contrib.auth.models import Group, User
 
 
 
-class GangSerializer(serializers.ModelSerializer):
-
-    name = serializers.Field(source = 'group.name')
-    #gangsters = serializers.PrimaryKeyRelatedField(many=True)
-    gangsters = GangsterSerializer(many=True)
-    class Meta:
-        model = Gang
-        fields = ('name', 'gangsters')
-
-
 class GangsterSerializer(serializers.ModelSerializer):
 
     gang = serializers.Field(source = 'gang.group.name')
@@ -25,6 +15,15 @@ class GangsterSerializer(serializers.ModelSerializer):
         model = Gangster
         fields = ('username','gang')
 
+
+class GangSerializer(serializers.ModelSerializer):
+
+    name = serializers.Field(source = 'group.name')
+    #gangsters = serializers.PrimaryKeyRelatedField(many=True)
+    gangsters = GangsterSerializer(many=True)
+    class Meta:
+        model = Gang
+        fields = ('name', 'gangsters')
 
 
 class VenueSerializer(serializers.ModelSerializer):
