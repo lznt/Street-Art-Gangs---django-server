@@ -7,7 +7,7 @@ from django.contrib.auth.models import Group, User
 
 class GangSerializer(serializers.ModelSerializer):
 
-    name = serializers.Field(source = 'gang.name')
+    name = serializers.Field(source = 'group.name')
     gangsters = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
