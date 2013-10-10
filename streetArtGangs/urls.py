@@ -5,6 +5,7 @@ from rest_framework import renderers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework import renderers
 from rest_framework.urlpatterns import format_suffix_patterns
 
 admin.autodiscover()
@@ -40,6 +41,6 @@ urlpatterns = format_suffix_patterns(patterns('server.views',
     url(r'^$', 'api_root'),
     url(r'^gangs/$', gang_list, name='gang-list'),
     url(r'^gangs/(?P<pk>[0-9]+)/$', gang_detail, name='gang-detail'),
-    url(r'^gangster/$', gangster_list, name='gangster-list'),
-    url(r'^gangster/(?P<pk>[0-9]+)/$', gangster_detail, name='gangster-detail')
+    url(r'^gangsters/$', gangster_list, name='gangster-list'),
+    url(r'^gangsters/(?P<pk>[0-9]+)/$', gangster_detail, name='gangster-detail')
 ))
