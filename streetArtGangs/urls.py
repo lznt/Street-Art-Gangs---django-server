@@ -1,30 +1,15 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
-from server.views import GangsterViewSet, GangViewSet
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.conf.urls import patterns, url, include
+from server import views
+from rest_framework.routers import DefaultRouter
 
-admin.autodiscover()
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register(r'snippets', views.GangViewSet)
+router.register(r'users', views.GangsterViewSet)
 
-
-
-gang_list = GangViewSet.as_view({
-    'get': 'list',
-})
-gang_detail = GangViewSet.as_view({
-    'get': 'retrieve',
-})
-
-gangster_list = GangsterViewSet.as_view({
-    'get': 'list'
-})
-gangster_detail = GangsterViewSet.as_view({
-    'get': 'retrieve'
-})
-
-urlpatterns = format_suffix_patterns(patterns('server.views',
-    url(r'^$', 'api_root'),
-    url(r'^gangs/$', gang_list, name='gang-list'),
-    url(r'^gangs/(?P<pk>[0-9]+)/$', gang_detail, name='gang-detail'),
-    url(r'^gangsters/$', gangster_list, name='gangster-list'),
-    url(r'^gangsters/(?P<pk>[0-9]+)/$', gangster_detail, name='gangster-detail')
-))
+# The API URLs are now determined automatically by the router.
+# Additionally, we include the login URLs for the browseable API.
+urlpatterns = patterns('',
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+)
