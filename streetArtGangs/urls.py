@@ -1,33 +1,17 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from server.views import GangsterViewSet, GangViewSet
-from rest_framework import renderers
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
-from rest_framework import renderers
 from rest_framework.urlpatterns import format_suffix_patterns
 
 admin.autodiscover()
 
 
-@api_view(('GET',))
-def api_root(request, format=None):
-    return Response({
-        'users': reverse('gangster-list', request=request, format=format),
-        'snippets': reverse('gang-list', request=request, format=format)
-    })
-
 
 gang_list = GangViewSet.as_view({
     'get': 'list',
-    'post': 'create'
 })
 gang_detail = GangViewSet.as_view({
     'get': 'retrieve',
-    'put': 'update',
-    'patch': 'partial_update',
-    'delete': 'destroy'
 })
 
 gangster_list = GangsterViewSet.as_view({
