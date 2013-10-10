@@ -3,22 +3,11 @@ from rest_framework import serializers
 from server.models import Venue, Gang, Gangster
 from django.contrib.auth.models import Group, User
 
-class GroupSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Group
-        fields = ('id', 'name')
-
-class UserSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ('id', 'username')
 
 
 class GangSerializer(serializers.ModelSerializer):
 
-    group = GroupSerializer()
+    name = serializers.Field(source = 'gang.name')
     gangsters = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
@@ -29,7 +18,8 @@ class GangSerializer(serializers.ModelSerializer):
 class GangsterSerializer(serializers.ModelSerializer):
 
     gang = GangSerializer()
-    user = UserSerializer()
+    username = serializers.Field(source = 'user.username')
+
 
     class Meta:
         model = Gangster
