@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from server.models import Venue
+from server.models import Venue, UserProfile
 from django.contrib.auth.models import User
 
 
@@ -9,6 +9,6 @@ class VenueSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'latitude', 'longitude')
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = UserProfile
