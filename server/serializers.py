@@ -14,4 +14,4 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('id', 'username', 'latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money')
+        fields = ('id', 'user', 'username','latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money')
