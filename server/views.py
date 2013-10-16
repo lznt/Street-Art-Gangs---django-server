@@ -1,4 +1,4 @@
-from server.serializers import VenueSerializer, UserSerializer
+from server.serializers import VenueSerializer, UserProfileSerializer
 from server.models import Venue
 from django.contrib.auth.models import User
 from rest_framework import viewsets
