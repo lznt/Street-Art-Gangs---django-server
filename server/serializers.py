@@ -8,7 +8,10 @@ class VenueSerializer(serializers.ModelSerializer):
         model = Venue
         fields = ('id', 'name', 'latitude', 'longitude')
 
-
 class UserProfileSerializer(serializers.ModelSerializer):
+
+    username = serializers.Field(source = 'user.username')
+
     class Meta:
         model = UserProfile
+        fields = ('id', 'username', 'latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money')
