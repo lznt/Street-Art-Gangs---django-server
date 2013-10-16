@@ -1,5 +1,5 @@
 from server.serializers import VenueSerializer, UserProfileSerializer
-from server.models import Venue
+from server.models import Venue, UserProfile
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 
