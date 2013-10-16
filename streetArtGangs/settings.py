@@ -86,3 +86,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Custom User prifile
+AUTH_PROFILE_MODULE='server.UserProfile'
