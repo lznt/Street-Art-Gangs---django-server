@@ -3,6 +3,6 @@ from server.models import Venue
 from rest_framework import viewsets
 
 
-class VenueViewSet(viewsets.ReadOnlyModelViewSet):
+class VenueViewSet(viewsets.ModelViewSet):
     queryset = Venue.objects.all()
     serializer_class = VenueSerializer
