@@ -24,6 +24,7 @@ class Venue(models.Model):
     time_checkin = models.DateTimeField(blank=True, null=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
+    realxtendID = models.IntegerField()
 
     class Meta:
         ordering = ('-time_checkin',)
