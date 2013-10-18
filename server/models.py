@@ -20,21 +20,21 @@ User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 class Venue(models.Model):
     CATEGORY_CHOICES = (
-        ('Outdoors', 'Great Outdoors'),
-        ('Nightlife', 'Nightlife Spots'),
-        ('Aerts', 'Arts & Entertainment'),
-        ('Education', 'Education'),
-        ('Food', 'Food'),
-        ('Other', 'Other Places'),
-        ('Shop', 'Shops & Services'),
-        ('Travel', 'Travel & Transport'),
+        ('Ou', 'Great Outdoors'),
+        ('Ni', 'Nightlife Spots'),
+        ('Ar', 'Arts & Entertainment'),
+        ('Ed', 'Education'),
+        ('Fo', 'Food'),
+        ('Ot', 'Other Places'),
+        ('Sh', 'Shops & Services'),
+        ('Tr', 'Travel & Transport'),
     )
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, blank=True, null=True)
     latestEditTimestamp = models.DateTimeField(blank=True, null=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    category = models.CharField(choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
 
 
 
