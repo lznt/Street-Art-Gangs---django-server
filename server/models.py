@@ -21,7 +21,7 @@ User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 class Venue(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, blank=True, null=True)
-    time_checkin = models.DateTimeField(blank=True, null=True)
+    latestEditTimestamp = models.DateTimeField(blank=True, null=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
     realxtendID = models.IntegerField()
