@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, url, include
 from server import views
 from rest_framework.routers import DefaultRouter
+from django.contrib import admin
+
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
