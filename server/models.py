@@ -27,8 +27,8 @@ class Venue(models.Model):
     realxtendID = models.IntegerField()
 
     class Meta:
-        ordering = ('-time_checkin',)
-        get_latest_by = 'time_checkin'
+        ordering = ('-latestEditTimestamp',)
+        get_latest_by = 'latestEditTimestamp'
 
     def __unicode__(self):
         return self.name
