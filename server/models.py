@@ -24,7 +24,6 @@ class Venue(models.Model):
     latestEditTimestamp = models.DateTimeField(blank=True, null=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    realxtendID = models.IntegerField()
 
     class Meta:
         ordering = ('-latestEditTimestamp',)

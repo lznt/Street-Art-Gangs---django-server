@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Venue
-        fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'realxtendID')
+        fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp')
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
