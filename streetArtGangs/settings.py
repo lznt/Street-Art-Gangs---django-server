@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'server',
-    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,19 +59,19 @@ WSGI_APPLICATION = 'streetArtGangs.wsgi.application'
 
 DATABASES = {
 
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'graffiti',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': 'graffiti',
+    # }
 
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'graffiti',
-#        'USER': 'gangAdmin',
-#        'PASSWORD': 'streetArtGangs',
-#        'HOST': '127.0.0.1',
-#        'PORT': '3306',
-#    }
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'graffiti',
+       'USER': 'gangAdmin',
+       'PASSWORD': 'streetArtGangs',
+       'HOST': '127.0.0.1',
+       'PORT': '3306',
+   }
 }
 
 # Internationalization
