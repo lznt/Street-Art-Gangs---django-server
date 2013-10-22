@@ -59,14 +59,20 @@ WSGI_APPLICATION = 'streetArtGangs.wsgi.application'
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'graffiti',
-        'USER': 'gangAdmin',
-        'PASSWORD': 'streetArtGangs',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
     }
+
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'graffiti',
+#        'USER': 'gangAdmin',
+#        'PASSWORD': 'streetArtGangs',
+#        'HOST': '127.0.0.1',
+#        'PORT': '3306',
+#    }
 }
 
 # Internationalization
