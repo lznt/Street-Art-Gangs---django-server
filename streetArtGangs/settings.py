@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'server',
 )
 
@@ -47,6 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 ROOT_URLCONF = 'streetArtGangs.urls'
@@ -95,3 +97,6 @@ STATIC_URL = '/static/'
 
 # Custom User prifile
 AUTH_PROFILE_MODULE='server.UserProfile'
+
+#CORS
+CORS_ORIGIN_ALLOW_ALL = True
