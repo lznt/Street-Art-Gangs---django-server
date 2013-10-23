@@ -27,7 +27,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
-	profile = serializers.ModelField(model_field=UserProfile()._meta.get_field('profile'))
+	profile = serializers.ModelField(model_field=User()._meta.get_field('profile'))
 
 	class Meta:
 		model = User
