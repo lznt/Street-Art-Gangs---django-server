@@ -27,7 +27,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
-	gang = serializers.Field(source='profile.gang')
+	gang = serializers.WritableField(source='profile.gang')
 
 	class Meta:
 		model = User
