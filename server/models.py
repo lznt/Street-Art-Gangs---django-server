@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     gang = models.ForeignKey('Gang', related_name='gangsters')
-    tagsCreated = models.IntegerField()
-    tagsDeleted = models.IntegerField()
-    money = models.IntegerField()
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    tagsCreated = models.IntegerField(default=0)
+    tagsDeleted = models.IntegerField(default=0)
+    money = models.IntegerField(default=0)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
 
     def __unicode__(self):
         return self.user.username
