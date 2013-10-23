@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
+    gang = models.ForeignKey('Gang', related_name='gangsters')
     tagsCreated = models.IntegerField()
     tagsDeleted = models.IntegerField()
     money = models.IntegerField()
@@ -16,6 +17,12 @@ class UserProfile(models.Model):
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
+
+class Gang(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Venue(models.Model):
