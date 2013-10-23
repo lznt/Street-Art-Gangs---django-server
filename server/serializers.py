@@ -27,11 +27,11 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
-	gang = serializers.ModelField(model_field=UserProfile()._meta.get_field('gang'))
+	profile = serializers.ModelField(model_field=UserProfile()._meta.get_field('profile'))
 
 	class Meta:
 		model = User
-		fields = ('id', 'username', 'password', 'email', 'gang')
+		fields = ('id', 'username', 'password', 'email', 'profile')
 
 
 	def restore_object(self, attrs, instance=None):
