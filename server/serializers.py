@@ -27,7 +27,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
-	gang = serializers.PrimaryKeyRelatedField()
+	gang = serializers.PrimaryKeyRelatedField(queryset=Gang.objects.all())
 
 	class Meta:
 		model = User
