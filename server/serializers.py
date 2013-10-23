@@ -29,7 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 	gang = serializers.Field(source = 'user.profile.gang')
 
-    class Meta:
+	class Meta:
         model = User
         fields = ('id', 'username', 'password', 'email', 'gang')
 
