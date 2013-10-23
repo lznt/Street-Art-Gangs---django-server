@@ -23,3 +23,10 @@ class GangSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gang
         fields = ('id', 'name', 'gangsters')
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'password', 'email')

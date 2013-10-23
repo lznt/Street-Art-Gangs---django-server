@@ -19,33 +19,8 @@ class GangViewSet(viewsets.ModelViewSet):
     queryset = Gang.objects.all()
     serializer_class = GangSerializer
 
-"""
-class Registration(CreateAPIView):
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
-    def post(self, request):
 
-        Accepts a JSON request containing:
-            - username
-            - email
-            - password
-        and saves the User on the backend
-
-        try:
-            data = request.DATA
-        except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-        username = force_unicode(data.get('username',''))
-        email = force_unicode(data.get('email',''))
-        password = force_unicode(data.get('password',''))
-
-        if username == '' or email == '' or password == '':
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            User.objects.get(username=username)
-            return Response(status=HTTP_409_CONFLICT)
-        except User.DoesNotExist:
-            User.objects.create_user(username,email,password)
-            return Response(status=HTTP_201_CREATED)
-"""
