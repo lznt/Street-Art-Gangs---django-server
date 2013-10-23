@@ -27,11 +27,11 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
-	#gang = serializers.PrimaryKeyRelatedField(queryset=Gang.objects.all())
+	gang = serializers.PrimaryKeyRelatedField(many=True)
 
 	class Meta:
 		model = User
-		fields = ('id', 'username', 'password', 'email', 'profile')
+		fields = ('id', 'username', 'password', 'email', 'gang')
 
 
 	def restore_object(self, attrs, instance=None):
