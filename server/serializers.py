@@ -18,7 +18,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class GangSerializer(serializers.ModelSerializer):
-	gangsters = serializers.PrimaryKeyRelatedField(many=True)
+	gangsters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
 	class Meta:
 		model = Gang
@@ -27,7 +27,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
-	gang = serializers.Field(source = 'profile.gang')
+	gang = serializers.PrimaryKeyRelatedField()
 
 	class Meta:
 		model = User
