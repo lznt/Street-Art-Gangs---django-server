@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = User
-		fields = ('id', 'username', 'password', 'email', 'profile.gang')
+		fields = ('id', 'username', 'password', 'email', 'profile')
 
 
 	def restore_object(self, attrs, instance=None):
