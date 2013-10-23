@@ -1,5 +1,5 @@
 from server.serializers import VenueSerializer, UserProfileSerializer
-from server.models import Venue, UserProfile
+from server.models import Venue, UserProfile, Gang
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -14,6 +14,10 @@ class VenueViewSet(viewsets.ModelViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
+class GangViewSet(viewsets.ModelViewSet):
+    queryset = Gang.objects.all()
+    serializer_class = GangSerializer
 
 """
 class Registration(CreateAPIView):
