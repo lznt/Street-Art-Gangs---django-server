@@ -46,11 +46,9 @@ class UserRegistrerView(generics.GenericAPIView):
     """
 
     def get(self, request, *args, **kwargs):
-        # Only UserProfileSerializer is required to serialize data since
-        # email is populated by the 'source' param on EmailField.
-        serializer = UserProfileSerializer(
-                instance=request.user.get_profile())
-        return Response(serializer.data)
+
+        # GET not allowed
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
