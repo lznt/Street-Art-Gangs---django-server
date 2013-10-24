@@ -62,11 +62,11 @@ class UserRegistrerView(APIView):
 			data = request.DATA.copy()
 			data['user'] = user.id
 			user_profile_serializer = UserProfileSerializer(data=data)
+
 			if user_profile_serializer.is_valid():
 				user_profile_serializer.save()
 				return Response(serializer.data, status=status.HTTP_201_CREATED)
-		# Combine errors from both serializers.
-		errors = dict()
-		errors.update(user_profile_serializer.errors)
-		errors.update(user_serializer.errors)
-		return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
+			return Response(user_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST
+
+		return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
