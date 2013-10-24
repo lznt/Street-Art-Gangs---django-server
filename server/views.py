@@ -45,6 +45,15 @@ class UserRegistrerView(generics.GenericAPIView):
     Create a new User.
     """
 
+    def get(self, request, *args, **kwargs):
+        # Only UserProfileSerializer is required to serialize data since
+        # email is populated by the 'source' param on EmailField.
+        serializer = UserProfileSerializer(
+                instance=request.user.get_profile())
+        return Response(serializer.data)
+
+
+
     def post(self, request, format=None):
         user_profile_serializer = UserProfileSerializer(
                 data=request.DATA)
@@ -54,5 +63,8 @@ class UserRegistrerView(generics.GenericAPIView):
             user_serializer.save()
             user_profile_serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # Combine errors from both serializers.
+        errors = dict()
+        errors.update(user_profile_serializer.errors)
+        errors.update(user_serializer.errors)
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
