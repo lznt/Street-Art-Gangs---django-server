@@ -55,8 +55,7 @@ class UserRegistrerView(APIView):
 		return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 	def post(self, request, format=None):
-		user_serializer = UserSerializer(
-				data=request.DATA)
+		user_serializer = UserSerializer(data=request.DATA)
 		if user_serializer.is_valid():
 			user = user_serializer.save()
 			data = request.DATA.copy()
@@ -69,4 +68,4 @@ class UserRegistrerView(APIView):
 
 			return Response(user_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST
 
-		return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#		return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
