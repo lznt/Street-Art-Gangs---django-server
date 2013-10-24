@@ -62,7 +62,7 @@ class UserRegistrerView(APIView):
 			user = user_serializer.save()
 			user_profile_serializer = UserProfileSerializer(instance=user,
 				data=request.DATA)
-			if user_profile_serializer.is_valid()
+			if user_profile_serializer.is_valid():
 				user_profile_serializer.save()
 				return Response(serializer.data, status=status.HTTP_201_CREATED)
 		# Combine errors from both serializers.
