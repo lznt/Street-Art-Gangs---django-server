@@ -49,6 +49,7 @@ class UserRegistrerView(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
 
         # GET not allowed
+        errors = dict()
         return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
