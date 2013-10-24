@@ -27,6 +27,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 
+#TODO: Fix after registration is completed
 	class Meta:
 		model = User
 		fields = ('id', 'username', 'password', 'email')
