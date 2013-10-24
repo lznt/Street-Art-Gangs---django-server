@@ -13,8 +13,6 @@ router.register(r'gangsters', views.UserProfileViewSet)
 router.register(r'gangs', views.GangViewSet)
 router.register(r'users', views.UserViewSet)
 
-router.register(r'auth/register', views.UserRegistrerView)
-
 
 # The API URLs are now determined automatically by the router.
 # Additionally, we include the login URLs for the browseable API.
