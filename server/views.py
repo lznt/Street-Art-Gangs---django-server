@@ -53,8 +53,8 @@ class UserRegistrerView(APIView):
 		# GET not allowed
 		errors = dict()
 		return Response(errors, status=status.HTTP_400_BAD_REQUEST)
-	@csrf_exempt
-	def dispatch(self, request, format=None):
+
+	def post(self, request, format=None):
 		user_serializer = UserSerializer(
 				data=request.DATA)
 		if user_serializer.is_valid():
