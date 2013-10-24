@@ -19,13 +19,19 @@ class VenueViewSet(viewsets.ModelViewSet):
     serializer_class = VenueSerializer
 
 class UserProfileViewSet(viewsets.ModelViewSet):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
 class GangViewSet(viewsets.ModelViewSet):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
     queryset = Gang.objects.all()
     serializer_class = GangSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
