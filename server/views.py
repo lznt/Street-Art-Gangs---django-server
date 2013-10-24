@@ -22,7 +22,7 @@ class GangViewSet(viewsets.ModelViewSet):
     serializer_class = GangSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny)
+    permission_classes = (AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
