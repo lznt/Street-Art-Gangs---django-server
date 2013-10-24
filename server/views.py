@@ -1,15 +1,20 @@
-from server.serializers import VenueSerializer, UserProfileSerializer, GangSerializer, UserSerializer
+#Base
+from rest_framework import viewsets
+
+#Authentication and Permissions
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
+#Models
 from server.models import Venue, UserProfile, Gang
 from django.contrib.auth.models import User
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.permissions import AllowAny
 
-
-
+#Serializers
+from server.serializers import VenueSerializer, UserProfileSerializer, GangSerializer, UserSerializer
 
 class VenueViewSet(viewsets.ModelViewSet):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
     queryset = Venue.objects.all()
     serializer_class = VenueSerializer
 
@@ -22,8 +27,5 @@ class GangViewSet(viewsets.ModelViewSet):
     serializer_class = GangSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-

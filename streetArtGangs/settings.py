@@ -100,10 +100,3 @@ AUTH_PROFILE_MODULE='server.UserProfile'
 
 #CORS
 CORS_ORIGIN_ALLOW_ALL = True
-
-#Permissions
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    )
-}
