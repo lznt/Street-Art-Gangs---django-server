@@ -42,7 +42,6 @@ class UserViewSet(viewsets.ModelViewSet):
 	serializer_class = UserSerializer
 
 
-@csrf_exempt
 class UserRegistrerView(APIView):
 
 	"""
