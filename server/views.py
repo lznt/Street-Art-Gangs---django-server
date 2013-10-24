@@ -59,7 +59,7 @@ class UserRegistrerView(APIView):
 				data=request.DATA)
 		if user_serializer.is_valid():
 			user = user_serializer.save()
-			data = request.DATA
+			data = request.DATA.copy()
 			data['user'] = user.id)
 			user_profile_serializer = UserProfileSerializer(data=data)
 			if user_profile_serializer.is_valid():
