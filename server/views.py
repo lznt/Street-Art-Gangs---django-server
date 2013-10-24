@@ -42,7 +42,7 @@ class UserViewSet(viewsets.ModelViewSet):
 	serializer_class = UserSerializer
 
 
-
+@csrf_exempt
 class UserRegistrerView(APIView):
 
 	"""
@@ -55,7 +55,6 @@ class UserRegistrerView(APIView):
 		errors = dict()
 		return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
-	@csrf_exempt
 	def post(self, request, format=None):
 		user_serializer = UserSerializer(
 				data=request.DATA)
