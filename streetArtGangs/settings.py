@@ -100,3 +100,11 @@ AUTH_PROFILE_MODULE='server.UserProfile'
 
 #CORS
 CORS_ORIGIN_ALLOW_ALL = True
+
+#Authenticaton
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
