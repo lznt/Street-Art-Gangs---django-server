@@ -3,7 +3,6 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.views.decorators.csrf import csrf_exempt
 
 
 #Authentication and Permissions
@@ -56,8 +55,8 @@ class UserRegistrerView(APIView):
 
 	def post(self, request, format=None):
 		user_serializer = UserSerializer(data=request.DATA)
+		errors = dict()
 		if user_serializer.is_valid():
-			user = user_serializer.save()
 			data = request.DATA.copy()
 			data['user'] = user_serializer.data.id
 			user_profile_serializer = UserProfileSerializer(data=data)
@@ -66,6 +65,9 @@ class UserRegistrerView(APIView):
 				user_profile_serializer.save()
 				return Response(user_profile_serializer.data, status=status.HTTP_201_CREATED)
 
-			return Response(user_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST
+			errors.update(user_profile_serializer.errors)
+			return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
-#		return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+		errors.update(user_serializer.errors)
+		return Response(errors, status=status.HTTP_400_BAD_REQUEST)
