@@ -41,8 +41,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 class VenueSerializer(serializers.ModelSerializer):
 
-	user = UserSerializer()
+	gang = serializers.Field(source='user.profile.gang')
 
 	class Meta:
 		model = Venue
-		fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
+		fields = ('id', 'name', 'user', 'gang', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
