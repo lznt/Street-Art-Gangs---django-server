@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 
 class VenueSerializer(serializers.ModelSerializer):
+
+	user = UserProfileSerializer()
+
 	class Meta:
 		model = Venue
 		fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
