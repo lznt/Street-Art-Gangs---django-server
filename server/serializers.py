@@ -11,13 +11,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
 		model = UserProfile
 		fields = ('id', 'user', 'username','latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money', 'gang')
 
-class VenueSerializer(serializers.ModelSerializer):
-
-	user = UserProfileSerializer()
-
-	class Meta:
-		model = Venue
-		fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
 
 class GangSerializer(serializers.ModelSerializer):
 	gangsters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
@@ -44,3 +37,12 @@ class UserSerializer(serializers.ModelSerializer):
 		ret = super(UserSerializer, self).to_native(obj)
 		del ret['password']
 		return ret
+
+
+class VenueSerializer(serializers.ModelSerializer):
+
+	user = UserSerializer()
+
+	class Meta:
+		model = Venue
+		fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
