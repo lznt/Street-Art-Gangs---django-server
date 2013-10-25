@@ -3,14 +3,6 @@ from server.models import Venue, UserProfile, Gang
 from django.contrib.auth.models import User
 
 
-class VenueSerializer(serializers.ModelSerializer):
-
-	user = UserProfileSerializer()
-
-	class Meta:
-		model = Venue
-		fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
-
 class UserProfileSerializer(serializers.ModelSerializer):
 
 	username = serializers.Field(source = 'user.username')
@@ -19,6 +11,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
 		model = UserProfile
 		fields = ('id', 'user', 'username','latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money', 'gang')
 
+class VenueSerializer(serializers.ModelSerializer):
+
+	user = UserProfileSerializer()
+
+	class Meta:
+		model = Venue
+		fields = ('id', 'name', 'user', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
 
 class GangSerializer(serializers.ModelSerializer):
 	gangsters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
