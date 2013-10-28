@@ -43,15 +43,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class UserRegistrerView(APIView):
 
-	"""
-	Create a new User.
-	"""
-
 	def get(self, request, *args, **kwargs):
-
-		# GET not allowed
-		errors = dict()
-		return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+		# Only UserProfileSerializer is required to serialize data since
+		# email is populated by the 'source' param on EmailField.
+		serializer = UserProfileSerializer(
+				instance=request.user.get_profile())
+		return Response(serializer.data)
 
 	def post(self, request, format=None):
 		user_serializer = UserSerializer(data=request.DATA)
