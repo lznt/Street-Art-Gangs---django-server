@@ -17,7 +17,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Gang
-		fields = ('id', 'name', 'gangsters')
+		fields = ('id', 'name', 'color', 'gangsters')
 
 
 class UserSerializer(serializers.ModelSerializer):
