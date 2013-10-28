@@ -52,6 +52,9 @@ class UserAuthView(APIView):
 					instance=request.user.profile)
 			return Response(serializer.data, status=status.HTTP_200_OK)
 
+		return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
 	#Register new user.
 	def post(self, request, format=None):
 		user_serializer = UserSerializer(data=request.DATA)
