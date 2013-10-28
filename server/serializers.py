@@ -5,10 +5,12 @@ from django.contrib.auth.models import User
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
-	username = serializers.Field(source = 'user.username')
+	username  = serializers.Field(source = 'user.username')
+
 
 	class Meta:
 		model = UserProfile
+		depth = 2
 		fields = ('id', 'user', 'username','latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money', 'gang')
 
 
@@ -17,6 +19,7 @@ class GangSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Gang
+		depth = 2
 		fields = ('id', 'name', 'color', 'gangsters')
 
 
@@ -25,6 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
 #TODO: Fix after registration is completed
 	class Meta:
 		model = User
+		depth = 2
 		fields = ('id', 'username', 'password', 'email')
 
 
@@ -45,4 +49,5 @@ class VenueSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Venue
+		depth = 2
 		fields = ('id', 'name', 'user', 'gang', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
