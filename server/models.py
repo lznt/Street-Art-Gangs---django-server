@@ -21,9 +21,9 @@ User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 class Gang(models.Model):
 
     COLOR_CHOICES = (
-        ('Purple', 'Purple'),
-        ('Green', 'Green'),
-        ('Blue', 'Blue'),
+        ('purple', 'Purple'),
+        ('green', 'Green'),
+        ('blue', 'Blue'),
     )
 
     name = models.CharField(max_length=100)
