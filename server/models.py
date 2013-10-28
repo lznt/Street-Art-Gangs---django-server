@@ -20,6 +20,8 @@ User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 class Gang(models.Model):
     name = models.CharField(max_length=100)
+    color = models.CharField(max_length=100)
+
 
     def __unicode__(self):
         return self.name
