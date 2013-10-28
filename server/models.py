@@ -19,8 +19,15 @@ User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 
 class Gang(models.Model):
+
+    COLOR_CHOICES = (
+        ('Purple', 'Purple'),
+        ('Green', 'Green'),
+        ('Blue', 'Blue'),
+    )
+
     name = models.CharField(max_length=100)
-    color = models.CharField(max_length=100)
+    color = models.CharField(max_length=100, choices=COLOR_CHOICES)
 
 
     def __unicode__(self):
