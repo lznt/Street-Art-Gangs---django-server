@@ -38,11 +38,8 @@ class UserSerializer(serializers.ModelSerializer):
 		del ret['password']
 		return ret
 
-
 	def get_nested_field(self, model_field):
-		ret = super(UserSerializer, self).to_native(obj)
-		del ret['password']
-		return ret
+		return SimpleUserSerializer()
 
 
 class VenueSerializer(serializers.ModelSerializer):
@@ -52,3 +49,10 @@ class VenueSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Venue
 		fields = ('id', 'name', 'user', 'gang', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
+
+
+class SimpleUserSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = User
+		fields = ('id', 'username', 'email')
