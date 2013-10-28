@@ -2,21 +2,15 @@ from rest_framework import serializers
 from server.models import Venue, UserProfile, Gang
 from django.contrib.auth.models import User
 
-
-class SimpleUserSerializer(serializers.ModelSerializer):
-
-	class Meta:
-		model = User
-		fields = ('id', 'username', 'email')
-
 class UserProfileSerializer(serializers.ModelSerializer):
 
+	#TODO: Properly use depth for compiling these fields
 	username  = serializers.Field(source = 'user.username')
+	color = serializers.Field(source = 'gang.color')
 
 	class Meta:
 		model = UserProfile
-		depth =2
-		fields = ('id', 'user', 'username','latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money', 'gang')
+		fields = ('id', 'user', 'username','latitude', 'longitude', 'tagsCreated', 'tagsDeleted', 'money', 'gang', 'color')
 
 
 class GangSerializer(serializers.ModelSerializer):
@@ -44,12 +38,10 @@ class UserSerializer(serializers.ModelSerializer):
 		del ret['password']
 		return ret
 
-	def get_nested_field(self, model_field):
-		return SimpleUserSerializer()
-
 
 class VenueSerializer(serializers.ModelSerializer):
 
+	#TODO: Properly use depth for compiling these fields
 	gang = serializers.Field(source='user.profile.gang')
 
 	class Meta:
