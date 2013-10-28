@@ -41,15 +41,18 @@ class UserViewSet(viewsets.ModelViewSet):
 	serializer_class = UserSerializer
 
 
-class UserRegistrerView(APIView):
+class UserAuthView(APIView):
 
+	#Login. Returns the current user.
 	def get(self, request, *args, **kwargs):
 		# Only UserProfileSerializer is required to serialize data since
 		# email is populated by the 'source' param on EmailField.
-		serializer = UserProfileSerializer(
-				instance=request.user.profile)
-		return Response(serializer.data)
+		if (request.user.is_authenticated()):
+			serializer = UserProfileSerializer(
+					instance=request.user.profile)
+			return Response(serializer.data, status=status.HTTP_200_OK)
 
+	#Register new user.
 	def post(self, request, format=None):
 		user_serializer = UserSerializer(data=request.DATA)
 		errors = dict()
