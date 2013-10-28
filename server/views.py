@@ -47,7 +47,7 @@ class UserRegistrerView(APIView):
 		# Only UserProfileSerializer is required to serialize data since
 		# email is populated by the 'source' param on EmailField.
 		serializer = UserProfileSerializer(
-				instance=request.user.get_profile())
+				instance=request.user.profile
 		return Response(serializer.data)
 
 	def post(self, request, format=None):
