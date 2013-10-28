@@ -3,6 +3,12 @@ from server.models import Venue, UserProfile, Gang
 from django.contrib.auth.models import User
 
 
+class SimpleUserSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = User
+		fields = ('id', 'username', 'email')
+
 class UserProfileSerializer(serializers.ModelSerializer):
 
 	username  = serializers.Field(source = 'user.username')
@@ -49,10 +55,3 @@ class VenueSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Venue
 		fields = ('id', 'name', 'user', 'gang', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
-
-
-class SimpleUserSerializer(serializers.ModelSerializer):
-
-	class Meta:
-		model = User
-		fields = ('id', 'username', 'email')
