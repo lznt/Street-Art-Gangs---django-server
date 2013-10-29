@@ -26,8 +26,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 	permission_classes = (IsAuthenticated,)
 	queryset = UserProfile.objects.all()
-	if (request.DATA['active']):
-		queryset = UserProfile.filter(acted_recently = True)
 	serializer_class = UserProfileSerializer
 
 class GangViewSet(viewsets.ModelViewSet):
