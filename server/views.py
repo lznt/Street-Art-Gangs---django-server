@@ -30,7 +30,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 	serializer_class = UserProfileSerializer
 
 	def list(self, request):
-		queryset = UserProfile.filter(acted_recently = True)
+		queryset = UserProfile.objects.filter(acted_recently = True)
 		serializer = UserProfileSerializer(queryset, many=True)
 		return Response(serializer.data)
 
