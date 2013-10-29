@@ -3,6 +3,8 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.utils import timezone
+import datetime
 
 
 #Authentication and Permissions
@@ -25,8 +27,17 @@ class VenueViewSet(viewsets.ModelViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 	permission_classes = (IsAuthenticated,)
-	queryset = UserProfile.objects.all()
 	serializer_class = UserProfileSerializer
+
+	def get_queryset(self):
+		"""
+		Optionally restricts the returned profiles.
+		"""
+		queryset = UserProfileViewSet.objects.all()
+		active = self.request.QUERY_PARAMS.get('active', None)
+		if active is not None:
+			queryset = queryset.filter(last_action__lte=timezone.now() + datetime.timedelta(seconds=30))
+		return queryset
 
 class GangViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
