@@ -28,6 +28,8 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 	permission_classes = (IsAuthenticated,)
 	serializer_class = UserProfileSerializer
+	queryset = UserProfileViewSet.objects.all()
+
 
 	def get_queryset(self):
 		"""
