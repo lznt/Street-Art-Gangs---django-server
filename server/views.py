@@ -28,14 +28,14 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 	permission_classes = (IsAuthenticated,)
 	serializer_class = UserProfileSerializer
-	queryset = UserProfileViewSet.objects.all()
+	queryset = UserProfile.objects.all()
 
 
 	def get_queryset(self):
 		"""
 		Optionally restricts the returned profiles.
 		"""
-		queryset = UserProfileViewSet.objects.all()
+		queryset = UserProfile.objects.all()
 		active = self.request.QUERY_PARAMS.get('active', None)
 		if active is not None:
 			queryset = queryset.filter(last_action__lte=timezone.now() + datetime.timedelta(seconds=30))
