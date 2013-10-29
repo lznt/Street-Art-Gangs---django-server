@@ -38,7 +38,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 		queryset = UserProfile.objects.all()
 		active = self.request.QUERY_PARAMS.get('active', None)
 		if active is not None:
-			queryset = queryset.filter(last_action__lte=timezone.now() + datetime.timedelta(seconds=30))
+			queryset = queryset.filter(last_action__gte=timezone.now() - datetime.timedelta(seconds=30))
 		return queryset
 
 class GangViewSet(viewsets.ModelViewSet):
