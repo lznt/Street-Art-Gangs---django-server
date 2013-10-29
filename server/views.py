@@ -20,13 +20,13 @@ from server.serializers import VenueSerializer, UserProfileSerializer, GangSeria
 
 class VenueViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
-	permission_classes = (IsAuthenticated,)
+#	permission_classes = (IsAuthenticated,)
 	queryset = Venue.objects.all()
 	serializer_class = VenueSerializer
 
 class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
-	permission_classes = (IsAuthenticated,)
+#	permission_classes = (IsAuthenticated,)
 	serializer_class = UserProfileSerializer
 	queryset = UserProfile.objects.all()
 
@@ -43,13 +43,13 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
 class GangViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
-	permission_classes = (IsAuthenticated,)
+#	permission_classes = (IsAuthenticated,)
 	queryset = Gang.objects.all()
 	serializer_class = GangSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
-	permission_classes = (IsAuthenticated,)
+#	permission_classes = (IsAuthenticated,)
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
 
