@@ -15,6 +15,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 		model = UserProfile
 		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'full_name', 'ranking', 'venues')
 
+
 class GangSerializer(serializers.ModelSerializer):
 	gangsters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 

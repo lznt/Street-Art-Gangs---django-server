@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     busts = models.IntegerField(default=0)
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
-    mood = models.CharField(max_length=100)
+    mood = models.CharField(max_length=100, blank=True, null=True)
     last_action =  models.DateTimeField(blank=True, null=True)
 
     def __unicode__(self):
