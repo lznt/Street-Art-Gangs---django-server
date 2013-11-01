@@ -7,13 +7,28 @@ class UserProfile(models.Model):
     gang = models.ForeignKey('Gang', related_name='gangsters')
     tags_created = models.IntegerField(default=0)
     tags_deleted = models.IntegerField(default=0)
-    money = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
+    busted = models.IntegerField(default=0)
+    busts = models.IntegerField(default=0)
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
+    mood = models.CharField(max_length=100)
     last_action =  models.DateTimeField(blank=True, null=True)
 
     def __unicode__(self):
         return self.user.username
+
+    def _get_ranking(self):
+        "Returns the user's ranking."
+        #return '%s %s' % (self.first_name, self.last_name) TODO: create function
+        return 'Ranking placeholder'
+
+    def _get_full_name(self):
+        "Returns the person's full name."
+        return '%s %s' % (self.user.first_name, self.user.last_name)
+
+    full_name = property(_get_full_name)
+    ranking = property(_get_ranking)
 
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
