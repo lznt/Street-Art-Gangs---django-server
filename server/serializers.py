@@ -7,6 +7,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
 	#TODO: Properly use depth for compiling these fields
 	username  = serializers.Field(source = 'user.username')
 	color = serializers.Field(source = 'gang.color')
+	full_name = serializers.Field()
+	ranking = serializers.Field()
+
 
 	class Meta:
 		model = UserProfile
