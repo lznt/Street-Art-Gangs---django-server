@@ -13,7 +13,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = UserProfile
-		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'full_name', 'ranking')
+		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'mood', 'full_name', 'ranking')
 
 
 class GangSerializer(serializers.ModelSerializer):
