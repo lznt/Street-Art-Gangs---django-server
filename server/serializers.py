@@ -8,6 +8,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
 	username  = serializers.Field(source = 'user.username')
 	color = serializers.Field(source = 'gang.color')
 	venues = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+	full_name = serializers.Field()
+	ranking = serializers.Field()
 
 	class Meta:
 		model = UserProfile
