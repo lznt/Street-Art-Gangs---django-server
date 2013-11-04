@@ -20,8 +20,9 @@ class UserProfile(models.Model):
 
     def _get_ranking(self):
         "Returns the user's ranking."
+        #TODO: Fix this
         #return '%s %s' % (self.first_name, self.last_name) TODO: create function
-        return 'Ranking placeholder'
+        return '#1'
 
     def _get_full_name(self):
         "Returns the person's full name."
