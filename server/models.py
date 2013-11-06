@@ -47,7 +47,7 @@ class Venue(models.Model):
         ('Tr', 'Travel & Transport'),
     )
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, blank=True, null=True, related_name='venues')
+    gangster = models.ForeignKey(UserProfile, blank=True, null=True, related_name='venues')
     latestEditTimestamp = models.DateTimeField(blank=True, null=True)
     latitude = models.FloatField()
     longitude = models.FloatField()

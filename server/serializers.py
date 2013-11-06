@@ -7,6 +7,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 	#TODO: Properly use depth for compiling these fields
 	username  = serializers.Field(source = 'user.username')
 	color = serializers.Field(source = 'gang.color')
+	venues = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
 	class Meta:
 		model = UserProfile
@@ -42,8 +43,8 @@ class UserSerializer(serializers.ModelSerializer):
 class VenueSerializer(serializers.ModelSerializer):
 
 	#TODO: Properly use depth for compiling these fields
-	gang = serializers.Field(source='user.profile.gang')
+	gang = serializers.Field(source='gangster.gang')
 
 	class Meta:
 		model = Venue
-		fields = ('id', 'name', 'user', 'gang', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
+		fields = ('id', 'name', 'gangster', 'gang', 'latitude', 'longitude', 'latestEditTimestamp', 'category')
