@@ -12,17 +12,23 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 #Models
-from server.models import Venue, UserProfile, Gang
+from server.models import Venue, UserProfile, Gang, Message
 from django.contrib.auth.models import User
 
 #Serializers
-from server.serializers import VenueSerializer, UserProfileSerializer, GangSerializer, UserSerializer
+from server.serializers import VenueSerializer, UserProfileSerializer, GangSerializer, UserSerializer, MessageSerializer
 
 class VenueViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 #	permission_classes = (IsAuthenticated,)
 	queryset = Venue.objects.all()
 	serializer_class = VenueSerializer
+
+class MessageViewSet(viewsets.ModelViewSet):
+	authentication_classes = (SessionAuthentication, BasicAuthentication)
+#	permission_classes = (IsAuthenticated,)
+	queryset = Message.objects.all()
+	serializer_class = MessageSerializer
 
 class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
