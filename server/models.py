@@ -77,3 +77,11 @@ class Venue(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class Message(models.Model):
+    gangster = models.ForeignKey(UserProfile, blank=True, null=True, related_name='venues')
+    timestamp = models.DateTimeField()
+    text = models.TextField()
+
+    def __unicode__(self):
+        return self.text
