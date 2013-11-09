@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from server.models import Venue, UserProfile, Gang
+from server.models import Venue, UserProfile, Gang, Message
 from django.contrib.auth.models import User
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -14,6 +14,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserProfile
 		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'full_name', 'ranking', 'venues')
+
+class MessageSerializer(serializers.ModelSerializer):
+	gangster = serializers.PrimaryKeyRelatedField(read_only=True)
+
+	class Meta:
+		model = Message
+		fields = ('id', 'gangster', 'timestamp', 'text')
 
 
 
