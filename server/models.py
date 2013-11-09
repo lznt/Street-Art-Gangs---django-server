@@ -79,7 +79,7 @@ class Venue(models.Model):
         return self.name
 
 class Message(models.Model):
-    gangster = models.ForeignKey(UserProfile, blank=True, null=True, related_name='venues')
+    gangster = models.ForeignKey(UserProfile, related_name='messages')
     timestamp = models.DateTimeField()
     text = models.TextField()
 
