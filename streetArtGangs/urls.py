@@ -12,6 +12,7 @@ router.register(r'venues', views.VenueViewSet)
 router.register(r'gangsters', views.UserProfileViewSet)
 router.register(r'gangs', views.GangViewSet)
 router.register(r'users', views.UserViewSet)
+router.register(r',messages', views.MessageViewSet)
 
 
 # The API URLs are now determined automatically by the router.
