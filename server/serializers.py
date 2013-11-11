@@ -16,7 +16,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'full_name', 'ranking', 'venues')
 
 class MessageSerializer(serializers.ModelSerializer):
-	gangster = serializers.PrimaryKeyRelatedField(read_only=True)
+	#gangster = serializers.PrimaryKeyRelatedField(read_only=True)
 
 	class Meta:
 		model = Message
