@@ -27,6 +27,7 @@ class VenueViewSet(viewsets.ModelViewSet):
 class MessageViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 #	permission_classes = (IsAuthenticated,)
+
 	queryset = Message.objects.all()
 	serializer_class = MessageSerializer
 
@@ -38,6 +39,9 @@ class MessageViewSet(viewsets.ModelViewSet):
 		latest = self.request.QUERY_PARAMS.get('latest', None)
 		if latest is not None:
 			queryset = queryset[:10]
+		team = self.request.QUERY_PARAMS.get('latest', None)
+		if team is not None:
+			queryset = queryset.filter(gangster__gang=team)
 		return queryset
 
 class UserProfileViewSet(viewsets.ModelViewSet):
