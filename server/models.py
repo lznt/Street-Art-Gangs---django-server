@@ -83,5 +83,8 @@ class Message(models.Model):
     timestamp = models.DateTimeField()
     text = models.TextField()
 
+    class Meta:
+        ordering = ('-timestamp',)
+
     def __unicode__(self):
         return self.text
