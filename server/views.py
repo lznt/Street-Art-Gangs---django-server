@@ -40,7 +40,7 @@ class MessageViewSet(viewsets.ModelViewSet):
 		if latest is not None:
 			queryset = queryset[:10]
 		gang = self.request.QUERY_PARAMS.get('gang', None)
-		if team is not None:
+		if gang is not None:
 			queryset = queryset.filter(gangster__gang=gang)
 		return queryset
 
