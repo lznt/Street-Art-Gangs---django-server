@@ -39,9 +39,9 @@ class MessageViewSet(viewsets.ModelViewSet):
 		latest = self.request.QUERY_PARAMS.get('latest', None)
 		if latest is not None:
 			queryset = queryset[:10]
-		team = self.request.QUERY_PARAMS.get('latest', None)
+		gang = self.request.QUERY_PARAMS.get('gang', None)
 		if team is not None:
-			queryset = queryset.filter(gangster__gang=team)
+			queryset = queryset.filter(gangster__gang=gang)
 		return queryset
 
 class UserProfileViewSet(viewsets.ModelViewSet):
