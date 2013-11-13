@@ -30,6 +30,16 @@ class MessageViewSet(viewsets.ModelViewSet):
 	queryset = Message.objects.all()
 	serializer_class = MessageSerializer
 
+	def get_queryset(self):
+		"""
+		Optionally restricts the latest 10 messages.
+		"""
+		queryset = Message.objects.all()
+		latest = self.request.QUERY_PARAMS.get('latest', None)
+		if latest is not None:
+			queryset = queryset[:10]
+		return queryset
+
 class UserProfileViewSet(viewsets.ModelViewSet):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 #	permission_classes = (IsAuthenticated,)
