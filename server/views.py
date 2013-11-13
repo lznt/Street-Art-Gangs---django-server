@@ -38,12 +38,14 @@ class MessageViewSet(viewsets.ModelViewSet):
 		"""
 		queryset = Message.objects.all()
 
-		limit = self.request.QUERY_PARAMS.get('limit', None)
-		if limit is not None:
-			queryset = queryset[:limit]
 		gang = self.request.QUERY_PARAMS.get('gang', None)
 		if gang is not None:
 			queryset = queryset.filter(gangster__gang=gang)
+
+		#This must be the last slice taken on the queryset.
+		limit = self.request.QUERY_PARAMS.get('limit', None)
+		if limit is not None:
+			queryset = queryset[:limit]
 		return queryset
 
 class UserProfileViewSet(viewsets.ModelViewSet):
