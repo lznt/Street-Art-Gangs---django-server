@@ -33,12 +33,14 @@ class MessageViewSet(viewsets.ModelViewSet):
 
 	def get_queryset(self):
 		"""
-		Optionally restricts the latest 10 messages.
+		Act according to the query paramethers in the get request
+
 		"""
 		queryset = Message.objects.all()
-		latest = self.request.QUERY_PARAMS.get('latest', None)
-		if latest is not None:
-			queryset = queryset[:10]
+
+		limit = self.request.QUERY_PARAMS.get('limit', None)
+		if limit is not None:
+			queryset = queryset[:limit]
 		gang = self.request.QUERY_PARAMS.get('gang', None)
 		if gang is not None:
 			queryset = queryset.filter(gangster__gang=gang)
