@@ -13,7 +13,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = UserProfile
-		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'full_name', 'ranking', 'venues')
+		fields = ('id', 'user', 'username','latitude', 'longitude', 'tags_created', 'tags_deleted', 'last_action','points', 'gang', 'color', 'busted', 'busts', 'full_name', 'ranking', 'venues', 'mood')
 
 class MessageSerializer(serializers.ModelSerializer):
 	#gangster = serializers.PrimaryKeyRelatedField(read_only=True)
