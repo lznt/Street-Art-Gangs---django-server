@@ -19,6 +19,7 @@ from django.contrib.auth.models import User
 from server.serializers import VenueSerializer, UserProfileSerializer, GangSerializer, UserSerializer, MessageSerializer
 
 class VenueViewSet(viewsets.ModelViewSet):
+	#TODO: filter by location
 	authentication_classes = (SessionAuthentication, BasicAuthentication)
 #	permission_classes = (IsAuthenticated,)
 	queryset = Venue.objects.all()
